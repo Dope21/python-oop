@@ -21,11 +21,16 @@ class Customer(User):
     def __init__(self, email, firstname, lastname, password):
         super().__init__(email, firstname, lastname, password)
         self.addresses = [Address(firstname=firstname, lastname=lastname, set=True)]
+        self.cart = Cart()
 
 class Admin(User):
     def __init__(self, email, firstname, lastname, password):
         super().__init__(email, firstname, lastname, password)
         self.phone = ""
+
+class Cart:
+    def __init__(self):
+        self.items = []
 
 class AccountManager:
 
