@@ -1,6 +1,0 @@
-<<<<<<< HEAD
-wo shi tai gao ren.
-=======
-wo shi tai gao ren
-game
->>>>>>> 6606907ed1a06a800ca881401855a430593edf92
