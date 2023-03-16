@@ -1,23 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import "./NavbarStyles.css";
 
 
 const Navbar = () => {
-  const [showDropdown, setShowDropdown] = useState(false);
-  const [catagory, setcatagory] = useState([]);
-
-  useEffect(() => {
-    axios.get('http://localhost:8000/api/catagory/')
-      .then(response => {
-        setcatagory(response.data);
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  }, []);
-
-
   return (
 <>
   <p class="fourday">All the products will be shipped within 4 business days.</p>
