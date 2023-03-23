@@ -1,6 +1,6 @@
 
 class User:
-    def __init__(self,id:str,email: str,firstname:str,lastname:str,password:str,cart: str):
+    def __init__(self,id:str,email: str,firstname:str,lastname:str,password:str):
         self.id = id
         self.email = email
         self.firstname = firstname
@@ -34,19 +34,16 @@ class Address:
         self.zip_code = zip_code
 
 class Cart:
-    def __init__(self,id:str,name:str,price:float,description:str,image:str,last_updated:str):
-        pass
+    def __init__(self,product,quantity,cartitems:list):
+       super().__init__(self,product,quantity)
+       self.cartitems = []
+    def add_item(self,cartitem):
+        self.cartitems.append(cartitem)
 
 class CartItem():
     def __init__(self,product,quantity:int):
         self.project = product
         self.quantity = quantity
-class Product():
-       pass
-
-product1 = Product('1','keyboard-it','300.00','testtttttt','/images/product','20-06-1987')
-
-
 
 
 
