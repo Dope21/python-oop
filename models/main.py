@@ -9,7 +9,11 @@ class Customer(User):
     def __init__(self,id:str,email:str,firstname:str,lastname:str,password:str,addresses:list):
         super().__init__(id,email, firstname, lastname, password)
         self.addresses = []
-        self.addresses.append(addresses)
+        self.cart = []
+    def add_address(self,address):
+        self.addresses.append(address)
+    def add_cart(self,cart):
+        pass
 
 
 class Admin(User):
@@ -25,6 +29,12 @@ class Address:
         self.phone = phone
         self.address = address
         self.zip_code = zip_code
+class Cart:
+    def __init__(self):
+        pass
+class Cartitem:
+    def __init__(self):
+        pass
 
 
 
