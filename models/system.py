@@ -1,26 +1,25 @@
+from dataclasses import dataclass
+from typing import list
+
+class Admin:
+    pass
+class Customer:
+    pass
+class Product:
+    pass
+class Category:
+    pass
+class Order:
+    pass
+class Discount:
+    pass
+
+@dataclass
 class System:
-    def __init__(self):
-        self.__costomers = []
-        self.__admins = []
-        self.__categories = []
-        self.__products = []
-        self.__orders = []
-        self.__codes = []
-    
-    def function_costomers():
-        pass
+    customers: list(Customer)
+    categories: list(Category)
+    products: list(Product)
+    orders: list(Order)
+    discounts: list(Discount)
 
-    def function_admins():
-        pass
-
-    def function_categories():
-        pass
-
-    def function_products():
-        pass
-
-    def function_orders():
-        pass
-
-    def function_codes(): #discount
-        pass
+# method ??
