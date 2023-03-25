@@ -16,10 +16,9 @@ class Discount:
 
 @dataclass
 class System:
+    admins: list(Admin)
     customers: list(Customer)
     categories: list(Category)
     products: list(Product)
     orders: list(Order)
     discounts: list(Discount)
-
-# method ??
