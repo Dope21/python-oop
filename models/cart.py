@@ -10,6 +10,8 @@ class Cartitem:
 class Cart:
     cartitems: list[Cartitem]
     
+
+# method list
     def add_cart():
         pass
 

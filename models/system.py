@@ -1,9 +1,15 @@
 from dataclasses import dataclass
-from typing import list
+from typing import List
+# from Customer       import Customer
+# from Admin          import Admin
+# from Category       import Category
+# from Product        import Product
+# from Order          import Order
+from CodeDiscount   import CodeDiscount
 
-class Admin:
-    pass
 class Customer:
+    pass
+class Admin:
     pass
 class Product:
     pass
@@ -11,14 +17,12 @@ class Category:
     pass
 class Order:
     pass
-class Discount:
-    pass
 
 @dataclass
 class System:
-    admins: list(Admin)
-    customers: list(Customer)
-    categories: list(Category)
-    products: list(Product)
-    orders: list(Order)
-    discounts: list(Discount)
+    customers: List[Customer]
+    admins: List[Admin]
+    categories: List[Category]
+    products: List[Product]
+    orders: List[Order]
+    codes: List[CodeDiscount]
