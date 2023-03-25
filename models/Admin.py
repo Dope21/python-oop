@@ -1,5 +1,7 @@
-from dataclasses import dataclass
+from dataclasses import dataclass,field
 from User import User
+
+
 @dataclass
 class Admin(User):
-        phone : int
+        phone : str = field(default="10",metadata={"max_length":10})
