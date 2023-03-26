@@ -11,14 +11,6 @@ class User:
     password : str
 
 
-@dataclass
-class Customer(User):
-        address:List[Address]
-
-
-
-class Admin(User):
-        phone : int
 
 
 
