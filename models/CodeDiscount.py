@@ -1,16 +1,23 @@
 from dataclasses import dataclass
-from enum import Enum
+from datetime import date
 from typing import List
 
-class DiscountStatus(Enum):
-    INACTIVE = 0
-    ACTIVE   = 1
-
-@dataclass
 class OrderItem():
     pass
 
 @dataclass
 class CodeDiscount():
     orderitems: List[OrderItem]
-    status: DiscountStatus
+    expire_date: date
+
+    def is_valid(self):
+        return self.expire_date > date.today()
+    
+# test class
+discount = CodeDiscount(10, date(2023, 1, 1))
+print(discount)
+
+if discount.is_valid():
+    print("Discount is still valid")
+else:
+    print("Discount has expired")

@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import List
 from System import Product
 
 @dataclass
@@ -6,17 +7,13 @@ class Cartitem:
     product: Product
     quantity: int
 
+    def set_quantity(self, quantity):
+        self.quantity = quantity
+
 @dataclass
 class Cart:
-    cartitems: list[Cartitem]
+    cartitems: List[Cartitem]
     
-
 # method list
-    def add_cart():
-        pass
-
-    def remove_item():
-        pass
-
-    def edit_quantity():
-        pass
+    def get_cart(self):
+        return self.cartitems
