@@ -50,3 +50,8 @@ print(cart.cart_items)
 
 item1.set_quantity(10)
 print(cart.cart_items)
+
+item1.set_product('new_product_name')
+print(cart.cart_items)
+
+print(item1.get_product())
