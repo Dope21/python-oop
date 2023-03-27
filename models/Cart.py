@@ -1,10 +1,12 @@
 from dataclasses import dataclass
 from typing import List
-from System import Product
+
+class Product:
+    pass
 
 @dataclass
 class CartItem:
-    product: str # is {"Product"} Class
+    product: Product 
     quantity: int
 
     def get_product(self):
@@ -16,8 +18,8 @@ class CartItem:
     def get_quantity(self):
         return self.quantity
 
-    def set_quantity(self, quantity):
-        self.quantity = quantity
+    def set_quantity(self, qty):
+        self.qty = qty
 
 @dataclass
 class Cart:
@@ -32,26 +34,3 @@ class Cart:
     def remove_item(self, item):
         if item in self.cart_items:
             self.cart_items.remove(item)
-
-# test objects/methods
-item1 = CartItem('example1', 2)
-item2 = CartItem('example2', 3)
-
-cart = Cart([])
-cart.add_item(item1)
-cart.add_item(item2)
-print(cart.cart_items)
-
-cart.remove_item(item1)
-print(cart.cart_items)
-
-cart.add_item(item=item1)
-print(cart.cart_items)
-
-item1.set_quantity(10)
-print(cart.cart_items)
-
-item1.set_product('new_product_name')
-print(cart.cart_items)
-
-print(item1.get_product())
