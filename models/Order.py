@@ -26,6 +26,7 @@ class Order:
   status: OrderStatus
   shipping: Shipping
   payment: Union[Paypal,CreditCard]
+  email: str
 
 # Testing
 item1 = OrderItem(product=Product(name="something", price=750), qty=1)
