@@ -1,8 +1,11 @@
 from dataclasses import dataclass
 from typing import List
 
+# dummy product
+@dataclass
 class Product:
-    pass
+   name: str
+   price: float 
 
 @dataclass
 class CartItem:
