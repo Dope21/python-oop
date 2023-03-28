@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from enum import Enum
+from typing import Optional
 
 class PaymentStatus(Enum):
   Unpaid = 0
@@ -7,8 +8,8 @@ class PaymentStatus(Enum):
   
 @dataclass
 class Payment:
-  transection_id: str
-  date: str
+  transection_id: Optional[str]
+  date: Optional[str]
   status: PaymentStatus
 
 class Paypal(Payment):
