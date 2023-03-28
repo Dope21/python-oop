@@ -2,8 +2,8 @@ from dataclasses import dataclass
 from typing import List, Union, Optional
 from enum import Enum
 
-from Payment import Paypal, CreditCard, PaymentStatus
-from Shipping import Shipping, ShippingMethod
+from .Payment import Paypal, CreditCard
+from .Shipping import Shipping
 
 @dataclass
 class Product:
@@ -27,21 +27,3 @@ class Order:
   shipping: Shipping
   payment: Union[Paypal,CreditCard]
   email: str
-
-# Testing
-item1 = OrderItem(product=Product(name="something", price=750), qty=1)
-item2 = OrderItem(product=Product(name="something", price=750), qty=1)
-
-address = Shipping(
-  tracking_no="number",
-  date="today", 
-  method=ShippingMethod.EMS, 
-  firstname="thanasak", 
-  lastname="limsila", 
-  address="some where in the world",
-  phone="number",
-  zip_code="1293"
-)
-payment = Paypal(status=PaymentStatus.Paid, date="today", transection_id="alkejiofahe")
-order = Order(items=[item1, item2], status=OrderStatus.CLOSE, shipping=address, payment=payment)
-print(order)
