@@ -1,7 +1,8 @@
 from dataclasses import dataclass, field
-from typing import List
+from typing import List, Optional
 
-from Address import Address
+from .Cart import Cart
+from .Address import Address
 
 @dataclass
 class User:
@@ -17,11 +18,8 @@ class Admin(User):
 
 @dataclass
 class Customer(User):
-        address:List[Address]
-
-
-
-
+        address:List[Optional[Address]]
+        cart: Optional[Cart]
 
 
 
