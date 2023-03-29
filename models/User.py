@@ -23,8 +23,8 @@ class Admin(User):
 
 @dataclass
 class Customer(User):
-        address:List[Optional[Address]]
-        cart: Optional[Cart]
+        addresses: List[Address] = field(default_factory=list)
+        cart: Optional[Cart] = None
 
 
 
