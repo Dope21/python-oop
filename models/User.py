@@ -64,14 +64,11 @@ class Customer(User):
 # TESTING
 customer = Customer(id='2', email='customer@example.com', firstname='Jane', lastname='Doe', password='password')
 
-
 address1 = Address(firstname='Jane', lastname='Doe', address='123 Main St', phone='123-456-7890', zip_code='12345', set=SetAddress.MAIN)
 customer.add_address(address1)
 
-
 address2 = Address(firstname='Jane', lastname='Doe', address='456 Main St', phone='123-456-7890', zip_code='12345', set=SetAddress.OTHER)
 customer.update_address(address1, address2)
-
 
 print(customer.get_account_detail())
 print(customer.get_addresses())
