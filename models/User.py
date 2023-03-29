@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from typing import List
-from system import system
-from Address import Address
+
+from Address import Address,SetAddress
 
 @dataclass
 class User:
@@ -41,7 +41,7 @@ class Customer(User):
         def update_address(self, old_address, new_address):
             if old_address in self.address:
                 self.address[self.address.index(old_address)] = new_address
-                system.update_customer(self, self)
+
                 return True
             else:
                 return False
@@ -49,7 +49,7 @@ class Customer(User):
         def delete_address(self, address):
             if address in self.address:
                 self.address.remove(address)
-                system.update_customer(self, self)
+    
                 return True
             else:
                 return False
@@ -59,7 +59,18 @@ class Customer(User):
             self.address.append(new_address)
             return True
 
+customer = Customer(id='2', email='customer@example.com', firstname='Jane', lastname='Doe', password='password')
 
+
+address1 = Address(firstname='Jane', lastname='Doe', address='123 Main St', phone='123-456-7890', zip_code='12345', set=SetAddress.MAIN)
+customer.add_address(address1)
+
+
+address2 = Address(firstname='Jane', lastname='Doe', address='456 Main St', phone='123-456-7890', zip_code='12345', set=SetAddress.OTHER)
+customer.update_address(address1, address2)
+
+print(customer.get_account_detail())
+print(customer.get_addresses())
 
 
 
