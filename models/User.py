@@ -59,6 +59,7 @@ class Customer(User):
             self.address.append(new_address)
             return True
 
+#ถ้าจะลอง test ลบ system ทิ้งก่อนค่อยลอง
 customer = Customer(id='2', email='customer@example.com', firstname='Jane', lastname='Doe', password='password')
 
 
