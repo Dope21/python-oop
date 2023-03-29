@@ -12,6 +12,11 @@ class User:
     lastname : str
     password : str
 
+    def check_credential(self, email, password):
+            if self.email == email and self.password == password:
+                    return True
+            return False
+
 @dataclass
 class Admin(User):
         phone : str = field(default="10",metadata={"max_length":10})
