@@ -27,3 +27,7 @@ class Order:
   shipping: Shipping
   payment: Union[Paypal,CreditCard]
   email: str
+
+  def is_history_of(self, email):
+    if self.email == email:
+      return True
