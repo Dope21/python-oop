@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Optional
 from enum import Enum
 
 @dataclass
@@ -9,9 +10,9 @@ class SetAddress(Enum):
 @dataclass
 class Address:
     firstname : str
-    lastname : str
-    address : str
-    phone : str
-    zip_code : str
+    lastname : str 
     set: SetAddress
+    address : Optional[str] = ""
+    phone : Optional[str] = ""
+    zip_code : Optional[str] = ""
 
