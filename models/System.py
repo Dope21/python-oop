@@ -12,8 +12,6 @@ class System:
     customers: List[Customer]
     admins: List[Admin]
     categories: List[Category]
-    subcategories: List[SubCategory]
-    products: List[Product]
     orders: List[Order]
     codes: List[CodeDiscount]
 
