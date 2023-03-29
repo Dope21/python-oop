@@ -14,4 +14,7 @@ class Address:
     phone : str
     zip_code : str
     set: SetAddress
-
+    
+    def get_address_detail(self):
+        return {'firstname': self.firstname, 'lastname': self.lastname, 'address': self.address,
+                'phone': self.phone, 'zip_code': self.zip_code, 'set': self.set.name}
