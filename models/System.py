@@ -30,12 +30,10 @@ class System:
 
     def sign_in(self, email, password):
         for customer in self.customers:
-            if not customer.check_credential(email, password):
-                continue
-            else: 
+            if customer.check_credential(email, password):
                 return True
-        return False 
-         
+        return False
+
     def get_order_history(self, email): 
         order_history_list = []
         for order in self.orders:
@@ -49,3 +47,11 @@ class System:
             return True
         else:
             return False 
+        
+    def update_customer(self, customer):
+        for in_list in self.customers:
+            if in_list.email == customer.email:
+                self.customers.remove(in_list)
+                self.add_customer(customer)
+                return True
+        return False 

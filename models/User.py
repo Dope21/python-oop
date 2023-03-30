@@ -3,7 +3,7 @@ from typing import List, Optional
 
 from .Cart import Cart
 from .Address import Address, SetAddress
-# from .System import System
+from .System import System
 
 @dataclass
 class User:
@@ -13,10 +13,7 @@ class User:
     password : str
 
     def check_credential(self, email, password):
-            if self.email == email and self.password == password:
-                    return True
-            return False
-
+            return self.email == email and self.password == password
 @dataclass
 class Admin(User):
         phone : str = field(default="10",metadata={"max_length":10})
@@ -26,27 +23,25 @@ class Customer(User):
         addresses: List[Address]
         cart: Optional[Cart] = None
 
-#         def get_account_detail(self):
-#             return {'email': self.email, 'firstname': self.firstname, 'lastname': self.lastname}
+        def get_account_detail(self):
+            return {'email': self.email, 'firstname': self.firstname, 'lastname': self.lastname }
 
-#         def get_addresses(self):
-#             return self.address
+        def get_addresses(self):
+            return self.addresses
 
-#         def add_address(self, new_address):
-#             if isinstance(new_address, Address):
-#                 self.address.append(new_address)
-#                 return True
-#             else:
-#                 return False
+        def add_address(self, new_address):
+            if isinstance(new_address, Address):
+                self.addresses.append(new_address)
+                return True
+            else:
+                return False
 
-#         def update_address(self, old_address, new_address):
-#             system = System()
-#             if old_address in self.address:
-#                 self.address[self.address.index(old_address)] = new_address
-#                 system.update_customer(self, self)
-#                 return True
-#             else:
-#                 return False
+        def update_address(self, old_address, new_address):
+            if old_address in self.addresses:
+                self.addresses[self.addresses.index(old_address)] = new_address
+                return True
+            else:
+                return False
 
 #         def delete_address(self, address):
 #             system = System()

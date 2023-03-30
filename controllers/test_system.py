@@ -4,17 +4,13 @@ router = APIRouter()
 
 from models.System import System
 from models.Cart import Cart
+from models.Address import Address, SetAddress
 
 @router.get("/")
-async def sign_in():
+async def sign_in(product):
   system = System()
-
-  email="test@gmail.com"
-  password="password"
-  firstname="firstname"
-  lastname="lastname"
   
-  customer = system.create_customer(email,password,firstname,lastname,Cart())
+  product = Product(product)
+  status = system.add_product(product)
 
-  result = system.sign_in(email=email,password=password)
-  return result
+  return 
