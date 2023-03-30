@@ -16,18 +16,40 @@ class System:
     codes: List[CodeDiscount] = field(default_factory=list)
 
     # CUSTOMER MANAGEMENT
+    ########################################################################################################################### Game
     def add_customer(self, customer):
         self.customers.append(customer)
     def list_customers(self):
+        list = []
         for i in self.customers:
-            return i
+            list.append(i)
+        return list
+    
+    ############## Category
+    def add_categories(self,category):
+        self.categories.append(category)
+    
+    def list_category(self):
+        list = []
+        for i in self.categories:
+            list.append(i)
+        return list
+    def find_category(self,name):
+        for i in self.categories:
+            if i.name==name:
+                return i
+        return False
+    
+    
+    #############################################################################################################################
+    
     
     def check_duplicate_email(self, email):
         for customer in self.customers:
            if customer.email == email:
                return True 
         return False
-
+    
     def sign_in(self, email, password):
         for customer in self.customers:
             if not customer.check_credential(email, password):

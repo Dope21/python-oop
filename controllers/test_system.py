@@ -23,7 +23,7 @@ async def sign_in():
   
   
   system.add_customer(Customer(email=email,password=password,firstname=firstname,lastname=lastname,addresses=[])) # create_customer ok
-
+  system.add_customer(Customer(email=email,password=password,firstname=firstname,lastname=lastname,addresses=[]))
   #result = system.sign_in(email=email,password=password) # sign_in ok
   #chk = system.check_duplicate_email(email=email2) # check_duplicate_email ok
   #get_order_history = system.get_order_history(email=email)
