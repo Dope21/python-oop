@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import List
 
 # dummy product
@@ -26,7 +26,7 @@ class CartItem:
 
 @dataclass
 class Cart:
-    cart_items: List[CartItem]
+    cart_items: List[CartItem] = field(default_factory=list)
     
     def get_cart(self):
         return self.cart_items
