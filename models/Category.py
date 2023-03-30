@@ -10,6 +10,7 @@ class BaseCategory:
 class SubCategory(BaseCategory):
     products: List[Product]
 
+    
 class Category(BaseCategory):
     sub_list: List[SubCategory]
 

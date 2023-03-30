@@ -16,11 +16,11 @@ class System:
     codes: List[CodeDiscount] = field(default_factory=list)
 
     # CUSTOMER MANAGEMENT
-    def create_customer(self, email, password, firstname, lastname, cart):
-        address = [Address(firstname=firstname, lastname=lastname, set=SetAddress.MAIN)]
-        customer = Customer(firstname=firstname,lastname=lastname,password=password,email=email, addresses=address, cart=cart)
-        self.add_customer(customer=customer)
-        return customer
+    def add_customer(self, customer):
+        self.customers.append(customer)
+    def list_customers(self):
+        for i in self.customers:
+            return i
     
     def check_duplicate_email(self, email):
         for customer in self.customers:
@@ -49,3 +49,5 @@ class System:
             return True
         else:
             return False 
+    def create_order(self):
+        pass
