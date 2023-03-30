@@ -12,9 +12,9 @@ class Address:
     firstname : str
     lastname : str
     set: SetAddress
-    address : Optional[str]
-    phone : Optional[str]
-    zip_code : Optional[str]
+    address : Optional[str] = None
+    phone : Optional[str] = None
+    zip_code : Optional[str] = None
     
     def get_address_detail(self):
         return {'firstname': self.firstname, 'lastname': self.lastname, 'address': self.address,
