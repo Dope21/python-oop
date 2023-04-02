@@ -16,16 +16,17 @@ class System:
     def sign_in(self, email, password):
         for customer in self.customers:
             if customer.email == email and customer.password == password:
-                return True
+                return customer
         return False
 
+    # Adding Object
     def add_customer(self, customer):
         if isinstance(customer, Customer):
             self.customers.append(customer)
             return True
         else:
             return False
-
+        
     def add_admin(self, admin):
         if isinstance(admin, Admin):
             self.customers.append(admin)
@@ -53,3 +54,30 @@ class System:
             return True
         else:
             return False
+    
+    # Finding Object
+    def find_customer_by_id(self, customer_id):
+        for customer in self.customers:
+            if customer_id == customer.id:
+                return customer
+        return False
+    
+    def find_product_by_id(self, product_id):
+        for category in self.categories:
+           for product in category.products:
+               if product_id == product.id:
+                   return product 
+        return False
+            
+    def find_product_by_name(self, product_name):
+        for category in self.categories:
+           for product in category.products:
+               if product_name == product.name:
+                   return product 
+        return False
+        
+    def find_category_by_name(self, category_name):
+        for category in self.categories:
+            if category.name == category_name:
+                return category
+        return False
