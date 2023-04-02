@@ -56,9 +56,9 @@ class System:
             return False
     
     # Finding Object
-    def find_customer_by_id(self, customer_id):
+    def find_customer_by_email(self, email):
         for customer in self.customers:
-            if customer_id == customer.id:
+            if email == customer.email:
                 return customer
         return False
     
