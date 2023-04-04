@@ -1,9 +1,6 @@
 from pydantic import BaseModel
 from typing import List
 
-# testing
-from models.Order import Product
-
 class Shippinp(BaseModel):
   tracking_no: str
   date: str
@@ -15,7 +12,7 @@ class Shippinp(BaseModel):
   zip_code: str
 
 class OrderItem(BaseModel):
-  product: Product
+  id: str
   qty: int
   price: float
 

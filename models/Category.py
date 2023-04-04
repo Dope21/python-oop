@@ -1,15 +1,10 @@
 from dataclasses import dataclass
-from typing import List
+from typing import List,Optional
 
 from .Product import Product
 
 @dataclass
-class BaseCategory:
+class Category:
     name: str
-
-class SubCategory(BaseCategory):
     products: List[Product]
-
-class Category(BaseCategory):
-    sub_list: List[SubCategory]
 
