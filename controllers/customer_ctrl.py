@@ -20,14 +20,12 @@ async def customer_login(signInInfo: SignInInfo):
 @router.post("/add_cart")
 async def add_cart_item(email: str, cart_item: CartItem):
   customer = system.find_customer_by_email(email)
-  if not customer:
-    raise HTTPException(status_code=400, detail="Customer not found")
-
   product = system.find_product_by_id(cart_item.product_id)
-  if not product:
-    raise HTTPException(status_code=400, detail="Product not found")
 
-  customer.add_cart_item(product, cart_item.qty)
-  return { "message": "successs" }
+  if customer and product:
+    customer.add_cart_item(product, cart_item.qty)
+    return { "message": "successs" }
+  else:
+    raise HTTPException(status_code=400, detail="Something went wrong")
 
   

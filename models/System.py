@@ -12,7 +12,7 @@ class System:
     categories: List[Category] = field(default_factory=list)
     orders: List[Order] = field(default_factory=list)
     codes: List[CodeDiscount] = field(default_factory=list)
-
+    ########## เกมส์แก้นะทุกตัวมันเป็น self.customers ไม้ได้ ผมแก้ตัวที่ผมใช้นะตอนใช้ก็ดูก่อนว่าของตัวเองต้องแก้มั้ย
     def sign_in(self, email, password):
         for customer in self.customers:
             if customer.email == email and customer.password == password:
@@ -33,10 +33,10 @@ class System:
             return True
         else:
             return False 
-     
+    ########## edit self.customers -->>  self.categories
     def add_category(self, category):
         if isinstance(category, Category):
-            self.customers.append(category)
+            self.categories.append(category)
             return True
         else:
             return False 
@@ -81,3 +81,8 @@ class System:
             if category.name == category_name:
                 return category
         return False
+    def list_category(self):
+        list=[]
+        for category in self.categories:
+            list.append(category)
+        return list

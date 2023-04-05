@@ -9,5 +9,5 @@ class CodeDiscount():
     code: str
     expire_date: date
 
-    def is_valid(self):
+    def is_expire(self):
         return self.expire_date > date.today()
