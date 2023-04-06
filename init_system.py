@@ -22,6 +22,15 @@ for i in range(5):
       Keyboard(f"002","K2 SSR",3200,"A mechanical keyboard with RGB backlight","sefaf.png","23-03-2023","v4","wireless","blue switches","pinklight"),
       Keyboard(f"003","K2 SSR",3200,"A mechanical keyboard with RGB backlight","sefaf.png","23-03-2023","v5","wireless","red switches","bluelight"),
       Keyboard(f"004","K3 SSR",3200,"A mechanical keyboard with RGB backlight","sefaf.png","23-03-2023","v2","wireless","red switches","redlight")]))
-      
-  
-  
+
+
+# wind {code_discount}
+from models.CodeDiscount import *
+
+# A dictionary to store the discount codes and their discount amount and expiration date
+DISCOUNT_CODES = {
+    'CODE1': CodeDiscount(code='CODE1', expire_date=date(2022, 1, 1), discount=0.1),
+    'CODE2': CodeDiscount(code='CODE2', expire_date=date(2023, 6, 30), discount=0.2),
+    'CODE3': CodeDiscount(code='CODE3', expire_date=date(2024, 2, 2), discount=0.3),
+    'CODE4': CodeDiscount(code='CODE3', expire_date=date(2025, 12, 31), discount=0.4),
+}
