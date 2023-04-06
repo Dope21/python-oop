@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from typing import List
+from models.Product import Product
 
 class Shippinp(BaseModel):
   tracking_no: str
@@ -25,5 +26,8 @@ class Payment(BaseModel):
   expired_date: str
   code: str
   method: str
+
+
+
 
   

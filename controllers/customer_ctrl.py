@@ -4,6 +4,9 @@ router = APIRouter()
 
 from init_system import system
 from schemas.customer_shcema import SignInInfo, CartItem
+from models.Cart import Cart
+from models.Product import Product
+from schemas.customer_shcema import CartSchema
 
 @router.get("/get_all")
 async def get_all_customer():
@@ -27,5 +30,12 @@ async def add_cart_item(email: str, cart_item: CartItem):
     return { "message": "successs" }
   else:
     raise HTTPException(status_code=400, detail="Something went wrong")
+  
+@router.get("/cart", response_model=CartSchema)
+async def view_cart():
+    my_cart = Cart()
+    my_cart.add_item(CartItem(product=Product(name="Product 1", price=9.99), quantity=2))
+    my_cart.add_item(CartItem(product=Product(name="Product 2", price=19.99), quantity=1))
+    return my_cart.dict()
 
   
