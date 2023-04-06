@@ -28,7 +28,7 @@ for i in range(5):
 from models.System import System
 from models.CodeDiscount import *
 
-# A dictionary to store the discount codes and their discount amount and expiration date
+# A dictionary to store the discount codes and their discount amount and expiration date 
 DISCOUNT_CODES = [
   CodeDiscount(code='CODE1', expire_date=date(2022, 1, 1), discount=0.1),
   CodeDiscount(code='CODE2', expire_date=date(2023, 6, 30), discount=0.2),
