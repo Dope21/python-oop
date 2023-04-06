@@ -26,7 +26,7 @@ async def add_cart_item(email: str, cart_item: CartItem):
     else:
         raise HTTPException(status_code=400, detail="Something went wrong")
 
-@router.get("/cart", response_model=CartSchema)
+@router.get("/viewcart", response_model=CartSchema)
 async def view_cart():
     my_cart = Cart()
     return CartSchema(cart_items=[CartItemSchema(product=ProductSchema(name=item.product.name, price=item.product.price), quantity=item.quantity, product_id=item.product_id) for item in my_cart.get_cart()])

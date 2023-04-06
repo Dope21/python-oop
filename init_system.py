@@ -1,7 +1,7 @@
 from models.System import System
 from models.User import Customer
 from models.Category import *
-from models.Cart import *
+from models.Cart import Cart
 
 system = System()
 
