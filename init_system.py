@@ -37,7 +37,7 @@ for i in range(5):
       Keyboard(f"002","K2 SSR",3200,"A mechanical keyboard with RGB backlight","sefaf.png","23-03-2023","v4","wireless","blue switches","pinklight"),
       Keyboard(f"003","K2 SSR",3200,"A mechanical keyboard with RGB backlight","sefaf.png","23-03-2023","v5","wireless","red switches","bluelight"),
       Keyboard(f"004","K3 SSR",3200,"A mechanical keyboard with RGB backlight","sefaf.png","23-03-2023","v2","wireless","red switches","redlight")]))
->>>>>>> 49addc50e050ffc847d6bf70f344e3d06d071c47
+############### 49addc50e050ffc847d6bf70f344e3d06d071c47
       
   
   
