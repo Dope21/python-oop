@@ -1,6 +1,4 @@
 from pydantic import BaseModel
-from models.Product import Product
-from models.Cart import CartItem
 from typing import List
 
 
@@ -11,13 +9,8 @@ class SignInInfo(BaseModel):
 
 
 class ProductSchema(BaseModel):
-    def __init__(self, id, name, price, description, image, qty):
-        self.id = id
-        self.name = name
-        self.price = price
-        self.description = description
-        self.image = image
-        self.qty = qty
+    name: str
+    price: float
 
 class CartItemSchema(BaseModel):
     product: ProductSchema 
