@@ -2,7 +2,6 @@ from fastapi import APIRouter, HTTPException
 from init_system import system
 from schemas.customer_shcema import SignInInfo, CartItemSchema, ProductSchema, CartSchema
 from models.Cart import Cart,CartItem
-from models.Product import Product
 
 router = APIRouter()
 

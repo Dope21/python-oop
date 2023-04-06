@@ -19,6 +19,12 @@ for i in range(5):
       name = f"cateTest{i+1}"
       product=[f"PP{i+1}",f"PP{i+2}",f"PP{i+3}",f"PP{i+4}"]
       system.add_category(Category(name=name,products=product))
+
+
+  ############# Ten
+
+
+
       
   
   
