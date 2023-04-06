@@ -30,7 +30,7 @@ for i in range(5):
 
 
 
-=======
+################
       
       system.add_category(Category(name=name,
       products=[Keyboard(f"001","K2 SSR",3200,"A mechanical keyboard with RGB backlight","sefaf.png","23-03-2023","v4","wireless","blue switches","backlight"),
