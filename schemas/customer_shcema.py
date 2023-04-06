@@ -11,8 +11,13 @@ class SignInInfo(BaseModel):
 
 
 class ProductSchema(BaseModel):
-    name: str
-    price: float
+    def __init__(self, id, name, price, description, image, qty):
+        self.id = id
+        self.name = name
+        self.price = price
+        self.description = description
+        self.image = image
+        self.qty = qty
 
 class CartItemSchema(BaseModel):
     product: ProductSchema 
