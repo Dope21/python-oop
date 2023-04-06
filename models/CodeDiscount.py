@@ -8,6 +8,7 @@ class OrderItem():
 class CodeDiscount():
     code: str
     expire_date: date
+    discount: float
 
     def is_expire(self):
         return self.expire_date > date.today()

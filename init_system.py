@@ -25,12 +25,17 @@ for i in range(5):
 
 
 # wind {code_discount}
+from models.System import System
 from models.CodeDiscount import *
 
 # A dictionary to store the discount codes and their discount amount and expiration date
-DISCOUNT_CODES = {
-    'CODE1': CodeDiscount(code='CODE1', expire_date=date(2022, 1, 1), discount=0.1),
-    'CODE2': CodeDiscount(code='CODE2', expire_date=date(2023, 6, 30), discount=0.2),
-    'CODE3': CodeDiscount(code='CODE3', expire_date=date(2024, 2, 2), discount=0.3),
-    'CODE4': CodeDiscount(code='CODE3', expire_date=date(2025, 12, 31), discount=0.4),
-}
+DISCOUNT_CODES = [
+  CodeDiscount(code='CODE1', expire_date=date(2022, 1, 1), discount=0.1),
+  CodeDiscount(code='CODE2', expire_date=date(2023, 6, 30), discount=0.2),
+  CodeDiscount(code='CODE3', expire_date=date(2024, 2, 2), discount=0.3),
+  CodeDiscount(code='CODE3', expire_date=date(2025, 12, 31), discount=0.4),
+]
+
+for i in range(len(DISCOUNT_CODES)):
+  system.add_code_discount(DISCOUNT_CODES[i])
+
