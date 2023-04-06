@@ -21,5 +21,3 @@ async def check_discount(code: DiscountCode):
     else:
         # Raise an HTTP exception with an error message
         raise HTTPException(status_code=400, detail='Invalid discount code')
-
-check_discount("CODE1")
