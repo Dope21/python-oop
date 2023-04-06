@@ -1,14 +1,20 @@
 import requests
 
-url = "http://localhost:8000/add_cart?email=customer@example.com"
+url = "http://localhost:8000/add_cart"
 payload = {
+    "email": "customer@example.com",
     "cart_item": {
         "product": {
-            "name": "Product 1",
-            "price": 10.99
+            "name": "Product Name",
+            "price": 9.99
         },
         "quantity": 2
     }
 }
-response = requests.post(url, json=payload)
-print(response.json())
+headers = {
+    "Content-Type": "application/json"
+}
+
+response = requests.post(url, json=payload, headers=headers)
+
+assert response.status_code == 200, f"Request failed with status code {response.status_code}: {response.json()['detail']}"
