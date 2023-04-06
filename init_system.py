@@ -1,6 +1,8 @@
 from models.System import System
 from models.User import Customer
 from models.Category import *
+from models.Cart import *
+
 system = System()
 
 for i in range(10):
