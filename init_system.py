@@ -4,7 +4,7 @@ from models.Category import *
 ######## HEAD
 from models.Cart import Cart
 
-=======
+########
 from models.Product import *
 ######## 49addc50e050ffc847d6bf70f344e3d06d071c47
 system = System()
