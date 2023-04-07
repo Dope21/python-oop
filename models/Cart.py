@@ -1,16 +1,12 @@
 from dataclasses import dataclass, field
-from typing import List
+from typing import List, Union
 
-# dummy product
-@dataclass
-class Product:
-   name: str
-   price: float 
+from .Product import Keyboard, Switch, Keycap, Mouse
 
 @dataclass
 class CartItem:
-    product: Product 
-    quantity: int
+    product: Union[Keyboard,Keycap,Switch,Mouse] 
+    qty: int
 
     def get_product(self):
         return self.product
@@ -32,7 +28,11 @@ class Cart:
         return self.cart_items
     
     def add_item(self, item):
-        self.cart_items.append(item)
+        if isinstance(item, CartItem):
+            self.cart_items.append(item)
+            return True
+        else:
+            return False
     
     def remove_item(self, item):
         if item in self.cart_items:
