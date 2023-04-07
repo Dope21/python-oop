@@ -80,32 +80,16 @@ class System:
         for category in self.categories:
             if category.name == category_name:
                 return category
-        return False
+        return "F"
     ########## Game : tell me before edit below method
     def list_category(self):
         
-        return self
+        return self.categories
     def list_category_name(self):
         list=[]
         for category in self.categories:
             list.append(category.name)
         return list
-    def all_product_in_catagory(self,name):
-        
-        for category in self.categories:
-            if category.name== name :
-                return category.products
-         
-    def product_in_catagory_by_id(self,catename,id):
-        for category in self.categories:
-            if category.name== catename :
-                for i in category.products:
-                    if i.id==id:
-                        return i
-    def product_in_catagory_by_name(self,catename,name):
-        for category in self.categories:
-            if category.name== catename :
-                for i in category.products:
-                    if i.name==name:
-                        return i
+   
+    
     ########## Game : ###########
