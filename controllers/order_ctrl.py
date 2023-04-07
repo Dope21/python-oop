@@ -43,3 +43,19 @@ async def checkout(checkout_info: CheckoutSchema):
 # async def buynow(product_id: str, payment: PaymentSchema, shipping: ShippinpSchma):
   # pass
 
+@router.post('/check_discount')
+async def check_discount(discount_code: str):
+
+    # Check if the code is valid
+    if discount_code in system.codes: # code is parameter in function and second code is code in system.codes
+         # Check if the code has expired
+        if system.codes[discount_code].is_expired():
+            # Raise an HTTP exception with an error message
+            raise HTTPException(status_code=400, detail='Discount code has expired')
+        else:
+            # Return the discount amount
+            discount = system.codes[discount_code].discount
+            return {'status': 'success', 'discount': discount}
+    else:
+        # Raise an HTTP exception with an error message
+        raise HTTPException(status_code=400, detail='Invalid discount code')

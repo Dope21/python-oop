@@ -34,8 +34,7 @@ class System:
             return True
         else:
             return False 
-    
-    # fix attribute name 
+
     def add_category(self, category):
         if isinstance(category, Category):
             self.categories.append(category)
@@ -96,3 +95,38 @@ class System:
             return CreditCard(name_on_card=name_on_card, status=PaymentStatus.Unpaid)
         else:
             return Paypal(name_on_card=name_on_card, status=PaymentStatus.Unpaid)
+
+    ########## Game : tell me before edit below method
+    def list_category(self):
+        list=[]
+        for category in self.categories:
+            list.append(category)
+        return list
+
+    def list_category_name(self):
+        list=[]
+        for category in self.categories:
+            list.append(category.name)
+        return list
+
+    def all_product_in_catagory(self,name):
+        list=[]
+        for category in self.categories:
+            if category.name== name :
+                list.append(category.products)
+        return list
+
+    def product_in_catagory_by_id(self,catename,id):
+        for category in self.categories:
+            if category.name== catename :
+                for i in category.products:
+                    if i.id==id:
+                        return i
+
+    def product_in_catagory_by_name(self,catename,name):
+        for category in self.categories:
+            if category.name== catename :
+                for i in category.products:
+                    if i.name==name:
+                        return i
+    ########## Game : ###########

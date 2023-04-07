@@ -2,9 +2,6 @@ from pydantic import BaseModel
 from typing import Optional
 
 class Shippinp(BaseModel):
-  tracking_no: Optional[str] = None
-  date: Optional[str] = None
-  method: Optional[str] = None
   firstname: str
   lastname: str
   address: str
