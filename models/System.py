@@ -83,21 +83,19 @@ class System:
         return False
     ########## Game : tell me before edit below method
     def list_category(self):
-        list=[]
-        for category in self.categories:
-            list.append(category)
-        return list
+        
+        return self
     def list_category_name(self):
         list=[]
         for category in self.categories:
             list.append(category.name)
         return list
     def all_product_in_catagory(self,name):
-        list=[]
+        
         for category in self.categories:
             if category.name== name :
-                list.append(category.products)
-        return list
+                return category.products
+         
     def product_in_catagory_by_id(self,catename,id):
         for category in self.categories:
             if category.name== catename :

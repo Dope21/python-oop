@@ -18,7 +18,7 @@ async def admin():
     return res
 @router.get("/catagory_by_name")
 async def admin():
-    res = system.find_category_by_name("cateTest1")
+    res = system.find_category_by_name("cateTest2")
     return res
 @router.get("/all_product_in_catagory_by_name")
 async def admin():
