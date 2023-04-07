@@ -26,9 +26,10 @@ async def add_cart_item(email: str, cart_item: CartItem):
     else:
         raise HTTPException(status_code=400, detail="Something went wrong")
 
-@router.get("/viewcart", response_model=CartSchema)
-
+@router.get("/viewcart")
 async def view_cart(email: str):
     customer = system.find_customer_by_email(email)
     if customer:
         return customer.cart
+    else:
+        return []
