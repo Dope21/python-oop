@@ -1,23 +1,19 @@
 from pydantic import BaseModel
-from typing import List
+from typing import Optional
 
 class Shippinp(BaseModel):
-  tracking_no: str
-  date: str
-  method: str
+  tracking_no: Optional[str] = None
+  date: Optional[str] = None
+  method: Optional[str] = None
   firstname: str
   lastname: str
   address: str
   phone: str
   zip_code: str
 
-class OrderItem(BaseModel):
+class ItemList(BaseModel):
   id: str
   qty: int
-  price: float
-
-class ItemList(BaseModel):
-  items_list: List[OrderItem]
 
 class Payment(BaseModel):
   card_number: str
@@ -25,5 +21,11 @@ class Payment(BaseModel):
   expired_date: str
   code: str
   method: str
+
+class CheckoutSchema(BaseModel):
+  email: str
+  pay_info: Payment
+  ship_info: Shippinp
+  discount: Optional[float] = 1
 
   
