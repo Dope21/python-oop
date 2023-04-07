@@ -8,13 +8,16 @@ class PaymentStatus(Enum):
   
 @dataclass
 class Payment:
-  transection_id: Optional[str]
-  date: Optional[str]
+  name_on_card: str
   status: PaymentStatus
+  transection_id: Optional[str] = None
+  date: Optional[str] = None
 
+  def pay(self, payment_info):
+    return True
+    
 class Paypal(Payment):
   pass
 
-@dataclass
 class CreditCard(Payment):
-  name_on_card: str
+  pass
