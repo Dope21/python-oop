@@ -108,5 +108,8 @@ class Switch(Product):
     self.quantity_set
 
 
-
+# adding keycap
+@dataclass
+class Keycap(Product):
+  pass
   
