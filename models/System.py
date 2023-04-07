@@ -4,6 +4,7 @@ from .User import Customer, Admin
 from .Order import Order
 from .Category import Category
 from .CodeDiscount import CodeDiscount
+from .Payment import CreditCard, Paypal, PaymentStatus
 
 @dataclass
 class System:
@@ -33,30 +34,31 @@ class System:
             return True
         else:
             return False 
-     
+    
+    # fix attribute name 
     def add_category(self, category):
         if isinstance(category, Category):
-            self.customers.append(category)
+            self.categories.append(category)
             return True
         else:
             return False 
 
     def add_order(self, order):
         if isinstance(order, Order):
-            self.customers.append(order)
+            self.orders.append(order)
             return True
         else:
             return False 
   
     def add_code_discount(self, code_discount):
         if isinstance(code_discount, CodeDiscount):
-            self.customers.append(code_discount)
+            self.codes.append(code_discount)
             return True
         else:
             return False
     
     # Finding Object
-    def find_customer_by_email(self, email):
+    def get_customer_by_email(self, email):
         for customer in self.customers:
             if email == customer.email:
                 return customer
@@ -81,3 +83,16 @@ class System:
             if category.name == category_name:
                 return category
         return False
+    
+    def find_discount_code(self, discount_code):
+        for code in self.codes:
+            if code.code == discount_code:
+                return code
+        return False
+            
+    # create payment
+    def create_payment(self, method, name_on_card):
+        if method == "credit-card":
+            return CreditCard(name_on_card=name_on_card, status=PaymentStatus.Unpaid)
+        else:
+            return Paypal(name_on_card=name_on_card, status=PaymentStatus.Unpaid)
