@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 
-router = APIRouter()
+router = APIRouter(prefix="/customer")
 
 from init_system import system
 from schemas.customer_shcema import SignInInfo, CartItem
@@ -26,6 +26,6 @@ async def add_cart_item(email: str, cart_item: CartItem):
     customer.add_cart_item(product, cart_item.qty)
     return { "message": "successs" }
   else:
-    raise HTTPException(status_code=400, detail="Something went wrong")
+    raise HTTPException(status_code=400, detail="Invalid customer email or product id")
 
   
