@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from typing import Optional
 
-from .Cart import Cart
+from .Cart import Cart, CartItem
 
 @dataclass
 class User:
@@ -19,3 +19,9 @@ class Admin(User):
 @dataclass
 class Customer(User):
         cart: Optional[Cart] = None
+
+# add item to cart method
+        def add_cart_item(self, product, qty): 
+                if not self.cart:
+                        self.cart = Cart()
+                return self.cart.add_item(CartItem(product, qty))
