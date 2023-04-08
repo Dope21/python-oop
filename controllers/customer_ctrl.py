@@ -1,7 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from init_system import system
-from schemas.customer_shcema import SignInInfo, CartItemSchema, ProductSchema, CartSchema
-from models.Cart import Cart,CartItem
+from schemas.customer_shcema import SignIn, AddCartItem, GetCart 
 
 router = APIRouter(prefix="/customer")
 
@@ -10,30 +9,28 @@ async def get_all_customer():
     return { "data": system.customers }
 
 @router.post("/sign_in")
-async def customer_login(signInInfo: SignInInfo):
-    customer = system.sign_in(signInInfo.email, signInInfo.password)
+async def customer_login(body: SignIn):
+    customer = system.sign_in(body.email, body.password)
     if not customer:
         raise HTTPException(status_code=400, detail="Wrong email or password")
     return { "message": "Sign in successful", "data": customer }
 
 @router.post("/add_cart")
-async def add_cart_item(email: str, cart_item: CartItem):
+async def add_cart_item(body: AddCartItem):
+    email = body.email
+    item_id = body.cart_item.product_id
+    qty = body.cart_item.qty
+    
     customer = system.find_customer_by_email(email)
-    product = system.find_product_by_id(cart_item.product_id)
+    product = system.find_product_by_id(item_id)
+
     if customer and product:
-        customer.add_cart_item(product, cart_item.quantity)
+        customer.add_cart_item(product, qty)
         return { "message": "success" }
     else:
         raise HTTPException(status_code=400, detail="Something went wrong")
 
-    if customer and product:
-        customer.add_cart_item(product, cart_item.qty)
-        return { "message": "successs" }
-    else:
-        raise HTTPException(status_code=400, detail="Invalid customer email or product id")
-
-  
-@router.get("/viewcart", response_model=CartSchema)
-async def view_cart():
-    my_cart = Cart()
-    return CartSchema(cart_items=[CartItemSchema(product=ProductSchema(name=item.product.name, price=item.product.price), quantity=item.quantity, product_id=item.product_id) for item in my_cart.get_cart()])
+@router.get("/viewcart")
+async def view_cart(body: GetCart):
+    customer = system.get_customer_by_email(body.email)
+    return customer.cart
