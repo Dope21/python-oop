@@ -1,29 +1,25 @@
 from pydantic import BaseModel
 from typing import Optional
 
-class Shippinp(BaseModel):
+class ShipInfo(BaseModel):
   firstname: str
   lastname: str
   address: str
   phone: str
   zip_code: str
 
-class ItemList(BaseModel):
-  id: str
-  qty: int
-
-class Payment(BaseModel):
+class PayInfo(BaseModel):
   card_number: str
   name_on_card: str
   expired_date: str
   code: str
   method: str
 
-class CheckoutSchema(BaseModel):
+class Checkout(BaseModel):
   email: str
-  pay_info: Payment
-  ship_info: Shippinp
+  pay_info: PayInfo
+  ship_info: ShipInfo
   discount: Optional[float] = 1
 
-class CodeSchema(BaseModel):
+class CheckDiscount(BaseModel):
   code: str

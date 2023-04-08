@@ -5,15 +5,15 @@ router = APIRouter(prefix="/order")
 from init_system import system
 from models.Order import Order, OrderItem, OrderStatus
 from models.Shipping import Shipping
-from schemas.order_shcema import CheckoutSchema
+from schemas.order_shcema import CheckoutSchema, CodeSchema
 
 @router.post("/checkout")
-async def checkout(checkout_info: CheckoutSchema):
+async def checkout(body: CheckoutSchema):
 
-  email = checkout_info.email
-  pay_info = checkout_info.pay_info
-  ship_info = checkout_info.ship_info
-  discount = checkout_info.discount
+  email = body.email
+  pay_info = body.pay_info
+  ship_info = body.ship_info
+  discount = body.discount
 
   customer = system.get_customer_by_email(email)
   if not customer:
@@ -44,18 +44,14 @@ async def checkout(checkout_info: CheckoutSchema):
   # pass
 
 @router.post('/check_discount')
-async def check_discount(discount_code: str):
+async def check_discount(body: CodeSchema):
+    code = body.code
+    for code_object in system.codes:
+      if code_object.code == code: 
 
-    # Check if the code is valid
-    if discount_code in system.codes: # code is parameter in function and second code is code in system.codes
-         # Check if the code has expired
-        if system.codes[discount_code].is_expired():
-            # Raise an HTTP exception with an error message
+        if code_object.is_expire():
             raise HTTPException(status_code=400, detail='Discount code has expired')
         else:
-            # Return the discount amount
-            discount = system.codes[discount_code].discount
-            return {'status': 'success', 'discount': discount}
-    else:
-        # Raise an HTTP exception with an error message
-        raise HTTPException(status_code=400, detail='Invalid discount code')
+            return { 'status': 'success', 'discount': code_object.discount }
+
+    raise HTTPException(status_code=400, detail='Invalid discount code')
