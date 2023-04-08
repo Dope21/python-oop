@@ -6,15 +6,7 @@ class SignInInfo(BaseModel):
   email: str
   password: str
 
-
-
-class ProductSchema(BaseModel):
-    name: str
-    price: float
-
 class CartItemSchema(BaseModel):
-    product: ProductSchema 
-    quantity: int
+    product_id: str 
+    qty: int
 
-class CartSchema(BaseModel):
-    cart_items: List[CartItemSchema] = []
