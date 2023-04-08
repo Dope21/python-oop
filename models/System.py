@@ -65,16 +65,16 @@ class System:
     
     def find_product_by_id(self, product_id):
         for category in self.categories:
-           for product in category.products:
-               if product_id == product.id:
-                   return product 
+            product = category.get_product_by_id(product_id)
+            if product:
+                return product
         return False
             
     def find_product_by_name(self, product_name):
         for category in self.categories:
-           for product in category.products:
-               if product_name == product.name:
-                   return product 
+            product = category.get_product_by_name(product_name)
+            if product:
+                return product
         return False
         
     def find_category_by_name(self, category_name):
@@ -96,37 +96,11 @@ class System:
         else:
             return Paypal(name_on_card=name_on_card, status=PaymentStatus.Unpaid)
 
-    ########## Game : tell me before edit below method
-    def list_category(self):
-        list=[]
-        for category in self.categories:
-            list.append(category)
-        return list
+    def get_all_category(self):
+        return self.categories
 
-    def list_category_name(self):
-        list=[]
+    def get_category_name(self):
+        list = []
         for category in self.categories:
             list.append(category.name)
         return list
-
-    def all_product_in_catagory(self,name):
-        list=[]
-        for category in self.categories:
-            if category.name== name :
-                list.append(category.products)
-        return list
-
-    def product_in_catagory_by_id(self,catename,id):
-        for category in self.categories:
-            if category.name== catename :
-                for i in category.products:
-                    if i.id==id:
-                        return i
-
-    def product_in_catagory_by_name(self,catename,name):
-        for category in self.categories:
-            if category.name== catename :
-                for i in category.products:
-                    if i.name==name:
-                        return i
-    ########## Game : ###########
