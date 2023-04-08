@@ -1,22 +1,13 @@
 from pydantic import BaseModel
 
-class  Categoryname(BaseModel):
-    catename : str
+class CateName(BaseModel):
+    cate_name : str
 
-class Productid(BaseModel):
-    pid : str
+class ProId(BaseModel):
+    id: str
     
-class Proid(BaseModel):
-    catename:str
-    id:str
-    
-class Proname(BaseModel):
-    catename:str
-    name:str
-
-class Probyname(BaseModel):
+class ProName(BaseModel):
     name: str
-
     
 
     
