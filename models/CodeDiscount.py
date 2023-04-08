@@ -8,6 +8,6 @@ class CodeDiscount():
     discount: float
 
     def is_expire(self):
-        if not self._expire_date:
+        if not self.expire_date:
             return True
-        return self._expire_date > date.today()
+        return self.expire_date > date.today()
