@@ -5,10 +5,10 @@ router = APIRouter(prefix="/order")
 from init_system import system
 from models.Order import Order, OrderItem, OrderStatus
 from models.Shipping import Shipping
-from schemas.order_shcema import CheckoutSchema, CodeSchema
+from schemas.order_shcema import Checkout, CheckDiscount
 
 @router.post("/checkout")
-async def checkout(body: CheckoutSchema):
+async def checkout(body: Checkout):
 
   email = body.email
   pay_info = body.pay_info
@@ -44,7 +44,7 @@ async def checkout(body: CheckoutSchema):
   # pass
 
 @router.post('/check_discount')
-async def check_discount(body: CodeSchema):
+async def check_discount(body: CheckDiscount):
     code = body.code
     for code_object in system.codes:
       if code_object.code == code: 
