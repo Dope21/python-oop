@@ -3,9 +3,19 @@ from datetime import date
 
 @dataclass
 class CodeDiscount():
-    code: str
-    expire_date: date
-    discount: float
+    _code: str
+    _expire_date: date
+    _discount: float
+
+    @property
+    def code(self):
+        return self._code
+    
+    @property
+    def discount(self):
+        return self._discount
 
     def is_expire(self):
-        return self.expire_date > date.today()
+        if not self._expire_date:
+            return True
+        return self._expire_date > date.today()
