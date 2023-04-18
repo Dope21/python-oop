@@ -3,25 +3,30 @@ from typing import Optional
 
 from .Cart import Cart, CartItem
 
-@dataclass
 class User:
-    email : str
-    firstname : str
-    lastname : str
-    password : str
+    def __init__(self, 
+                 email = str, 
+                 firstname = str,
+                 lastname = str,
+                 password = str ):
+        
+        self.__email = email
+        self.__firstname = firstname
+        self.__lastname = lastname
+        self.__password = password
 
     def check_credential(self, email, password):
-            return self.email == email and self.password == password
-@dataclass
+            return self.__email == email and self.__password == password
+    
 class Admin(User):
-        phone : str = field(default="10",metadata={"max_length":10})
+        def __init__(self, phone: str):
+                self.__phone = phone
         
-@dataclass
 class Customer(User):
-        cart: Optional[Cart] = None
+        def __init__(self, cart: Optional[Cart] = None):
+                self.__cart = cart
 
-# add item to cart method
         def add_cart_item(self, product, qty): 
-                if not self.cart:
-                        self.cart = Cart()
-                return self.cart.add_item(CartItem(product, qty))
+                if not self.__cart:
+                        self.__cart = Cart()
+                return self.__cart.add_item(CartItem(product, qty))
