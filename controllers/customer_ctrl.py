@@ -25,8 +25,8 @@ async def customer_register(body: SignUp):
     if system.get_customer_by_email(email):
         raise HTTPException(status_code=400, detail="This email already exist")
 
-    system.add_customer(Customer(email, password, firstname, lastname, Cart()))
-    return {"message": "Successfully Sign-up"}
+    if system.create_customer(email, password, firstname, lastname):
+        return {"message": "Successfully Sign-up"}
 
 
 @router.post("/add_cart")

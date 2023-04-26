@@ -5,6 +5,7 @@ from .Order import Order
 from .Category import Category
 from .CodeDiscount import CodeDiscount
 from .Payment import CreditCard, Paypal, PaymentStatus
+from .Cart import Cart
 
 
 @dataclass
@@ -20,6 +21,9 @@ class System:
             if customer.check_credential(email, password):
                 return customer
         return False
+
+    def create_customer(self, email, password, firstname, lastname):
+        return self.add_customer(Customer(email, password, firstname, lastname, Cart()))
 
     # Adding Object
     def add_customer(self, customer):
