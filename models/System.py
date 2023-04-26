@@ -17,7 +17,7 @@ class System:
 
     def sign_in(self, email, password):
         for customer in self.customers:
-            if customer.email == email and customer.password == password:
+            if customer.check_credential(email, password):
                 return customer
         return False
 

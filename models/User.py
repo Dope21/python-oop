@@ -8,13 +8,8 @@ class User:
         self.__firstname = firstname
         self.__lastname = lastname
 
-    @property
-    def email(self):
-        return self.__email
-
-    @property
-    def password(self):
-        return self.__password
+    def check_credential(self, email, password):
+        return self.__email == email and self.__password == password
 
 
 class Admin(User):
