@@ -1,27 +1,39 @@
-from dataclasses import dataclass, field
-from typing import Optional
+from .Cart import Cart
 
-from .Cart import Cart, CartItem
 
-@dataclass
 class User:
-    email : str
-    firstname : str
-    lastname : str
-    password : str
+    def __init__(self, email: str, password: str, firstname: str, lastname: str):
+        self.__email = email
+        self.__password = password
+        self.__firstname = firstname
+        self.__lastname = lastname
 
-    def check_credential(self, email, password):
-            return self.email == email and self.password == password
-@dataclass
+    @property
+    def email(self):
+        return self.__email
+
+    @property
+    def password(self):
+        return self.__password
+
+
 class Admin(User):
-        phone : str = field(default="10",metadata={"max_length":10})
-        
-@dataclass
-class Customer(User):
-        cart: Optional[Cart] = None
+    def __init__(
+        self, email: str, password: str, firstname: str, lastname: str, phone: str
+    ):
+        super().__init__(email, password, firstname, lastname)
+        self.__phone = phone
 
-# add item to cart method
-        def add_cart_item(self, product, qty): 
-                if not self.cart:
-                        self.cart = Cart()
-                return self.cart.add_item(CartItem(product, qty))
+
+class Customer(User):
+    def __init__(
+        self,
+        email: str,
+        password: str,
+        firstname: str,
+        lastname: str,
+        cart: Cart,
+    ):
+        super().__init__(email, password, firstname, lastname)
+        self.__cart = cart
+        self.__orders = []
