@@ -27,8 +27,7 @@ class System:
         if isinstance(customer, Customer):
             self.customers.append(customer)
             return True
-        else:
-            return False
+        raise Exception("Please add Customer object.")
 
     def add_admin(self, admin):
         if isinstance(admin, Admin):
