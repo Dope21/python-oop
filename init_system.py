@@ -86,10 +86,6 @@ p5 = Keyboard(
 keyboard_cate = Category(name="keybaord", products=[p1, p2, p3, p4, p5])
 system.add_category(keyboard_cate)
 
-customer = system.get_customer_by_email("email1@email.com")
-customer.add_cart_item(p1, 2)
-customer.add_cart_item(p2, 1)
-
 # add code discount
 code = CodeDiscount(code="9arm", discount=0.8, expire_date="yy-mm-dd")
 system.add_code_discount(code)
