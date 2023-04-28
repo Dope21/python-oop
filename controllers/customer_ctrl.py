@@ -1,6 +1,8 @@
 from fastapi import APIRouter, HTTPException
 from init_system import system
 from schemas.customer_shcema import SignIn, SignUp, AddCartItem, GetCart
+from models.User import Customer
+from models.Cart import Cart
 
 router = APIRouter(prefix="/customer")
 
@@ -23,8 +25,8 @@ async def customer_register(body: SignUp):
     if system.get_customer_by_email(email):
         raise HTTPException(status_code=400, detail="This email already exist")
 
-    if system.create_customer(email, password, firstname, lastname):
-        return {"message": "Successfully Sign-up"}
+    system.add_customer(Customer(email, password, firstname, lastname, Cart()))
+    return {"message": "Successfully Sign-up"}
 
 
 @router.post("/add_cart")

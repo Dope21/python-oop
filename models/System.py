@@ -16,16 +16,13 @@ class System:
     orders: List[Order] = field(default_factory=list)
     codes: List[CodeDiscount] = field(default_factory=list)
 
+    # customer
     def sign_in(self, email, password):
         for customer in self.customers:
             if customer.check_credential(email, password):
                 return customer
         return False
 
-    def create_customer(self, email, password, firstname, lastname):
-        return self.add_customer(Customer(email, password, firstname, lastname, Cart()))
-
-    # Adding Object
     def add_customer(self, customer):
         if isinstance(customer, Customer):
             self.customers.append(customer)
