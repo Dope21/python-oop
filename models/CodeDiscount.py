@@ -1,13 +1,11 @@
-from dataclasses import dataclass
 from datetime import date
 
-@dataclass
-class CodeDiscount():
-    code: str
-    expire_date: date
-    discount: float
+
+class CodeDiscount:
+    def __init__(self, code: str, expire_date: date, discount: float):
+        self.__code = code
+        self.__expire_date = date
+        self.__discount = discount
 
     def is_expire(self):
-        if not self.expire_date:
-            return True
-        return self.expire_date > date.today()
+        return self.__expire_date > date.today()
