@@ -11,6 +11,10 @@ class User:
     def check_credential(self, email, password):
         return self.__email == email and self.__password == password
 
+    @property
+    def email(self):
+        return self.__email
+
 
 class Admin(User):
     def __init__(
