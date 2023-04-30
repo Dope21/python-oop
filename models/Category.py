@@ -4,16 +4,20 @@ from .Product import *
 class Category:
     def __init__(self, name):
         self.__name = name
-        self.__product = []
+        self.__products = []
 
     @property
     def name(self):
         return self.__name
 
+    @property
+    def product(self):
+        return self.__products
+
     def create_product(self, **kwargs):
         data = kwargs
-        if len(self.__product) != 0:
-            pro_id = self.__product[-1].id + 1
+        if len(self.__products) != 0:
+            pro_id = self.__products[-1].id + 1
         else:
             pro_id = 1
 
@@ -68,6 +72,6 @@ class Category:
 
     def add_product(self, product):
         if isinstance(product, Product):
-            self.__product.append(product)
+            self.__products.append(product)
         else:
             raise ValueError("Please add Product object.")

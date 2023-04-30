@@ -35,3 +35,9 @@ class System:
         customer = Customer(email, password, firstname, lastname, Cart())
         self.add_customer(customer)
         return customer
+
+    # category
+    def get_category_by_name(self, name):
+        for cate in self.__categories:
+            if cate.name == name:
+                return cate
