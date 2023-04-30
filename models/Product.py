@@ -1,5 +1,5 @@
 class Product:
-    def __init__(self, id, name, price, description, image, qty, last_update):
+    def __init__(self, id, name, price, description, image, qty):
         self.__id = id
         self.__name = name
         self.__price = price
@@ -36,10 +36,8 @@ class Keyboard(Product):
 
 
 class Mouse(Product):
-    def __init__(
-        self, id, name, price, description, image, qty, last_update, connection, color
-    ):
-        super().__init__(id, name, price, description, image, qty, last_update)
+    def __init__(self, id, name, price, description, image, qty, connection, color):
+        super().__init__(id, name, price, description, image, qty)
         self.__connection = connection
         self.__color = color
 
@@ -56,11 +54,10 @@ class Switch(Product):
         description,
         image,
         qty,
-        last_update,
         option,
         quantity_set,
     ):
-        super().__init__(id, name, price, description, image, qty, last_update)
+        super().__init__(id, name, price, description, image, qty)
         self.__option = option
         self.__quantity_set = quantity_set
 
@@ -69,9 +66,7 @@ class Switch(Product):
 
 
 class Keycap(Product):
-    def __init__(
-        self, id, name, price, description, image, qty, last_update, version, color
-    ):
-        super().__init__(id, name, price, description, image, qty, last_update)
+    def __init__(self, id, name, price, description, image, qty, version, color):
+        super().__init__(id, name, price, description, image, qty)
         self.__version = version
         self.__color = color
