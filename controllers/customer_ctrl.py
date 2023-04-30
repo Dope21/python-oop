@@ -1,11 +1,6 @@
 from fastapi import APIRouter, HTTPException
-from fastapi.responses import JSONResponse
 from init_system import system
 from schemas.customer_shcema import SignIn, SignUp, AddCartItem, GetCart
-from models.User import Customer
-from models.Cart import Cart
-
-from models.CodeDiscount import *
 
 router = APIRouter(prefix="/customer")
 
@@ -13,12 +8,14 @@ router = APIRouter(prefix="/customer")
 @router.post("/sign_in")
 async def customer_login(body: SignIn):
     try:
-        customer = system.sign_in(body.email, body.password)
-        if not customer:
-            return JSONResponse(status_code=400, content="Wrong email or password.")
-        return {"detail": "Successfully Sign-in", "data": customer.email}
+        return {
+            "detail": "Successfully Sign-in",
+            "data": system.sign_in(body.email, body.password),
+        }
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
-        return JSONResponse(status_code=500, content=str(e))
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 @router.post("/sign_up")
@@ -29,14 +26,13 @@ async def customer_register(body: SignUp):
         firstname = body.firstname
         lastname = body.lastname
 
-        if system.get_customer_by_email(email):
-            raise HTTPException(status_code=400, detail="This email already exist")
+        customer = system.create_customer(email, password, firstname, lastname)
+        return {"detail": "Successfully Sign-up", "data": customer.email}
 
-        system.add_customer(Customer(email, password, firstname, lastname, Cart()))
-        return {"detail": "Successfully Sign-up"}
-
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
-        return JSONResponse(status_code=500, content=str(e))
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 @router.post("/add_cart")
