@@ -11,8 +11,25 @@ class Product:
     def id(self):
         return self.__id
 
+    @property
+    def name(self):
+        return self.__name
 
-#############################################################   Keyboard inherite form product #########################################################
+    @property
+    def price(self):
+        return self.__price
+
+    @property
+    def description(self):
+        return self.__description
+
+    @property
+    def image(self):
+        return self.__image
+
+    @property
+    def qty(self):
+        return self.__qty
 
 
 class Keyboard(Product):
@@ -37,12 +54,12 @@ class Keyboard(Product):
 
     def get_detail(self):
         return {
-            "id": self._Product__id,
-            "name": self._Product__name,
-            "price": self._Product__price,
-            "description": self._Product__description,
-            "image": self._Product__image,
-            "qty": self._Product__qty,
+            "id": self.id,
+            "name": self.name,
+            "price": self.price,
+            "description": self.description,
+            "image": self.image,
+            "qty": self.qty,
             "version": self.__version,
             "type": self.__type,
             "switches": self.__switches,
@@ -61,12 +78,12 @@ class Mouse(Product):
 
     def get_detail(self):
         return {
-            "id": self._Product__id,
-            "name": self._Product__name,
-            "price": self._Product__price,
-            "description": self._Product__description,
-            "image": self._Product__image,
-            "qty": self._Product__qty,
+            "id": self.id,
+            "name": self.name,
+            "price": self.price,
+            "description": self.description,
+            "image": self.image,
+            "qty": self.qty,
             "connection": self.__connection,
             "color": self.__color,
         }
@@ -93,12 +110,12 @@ class Switch(Product):
 
     def get_detail(self):
         return {
-            "id": self._Product__id,
-            "name": self._Product__name,
-            "price": self._Product__price,
-            "description": self._Product__description,
-            "image": self._Product__image,
-            "qty": self._Product__qty,
+            "id": self.id,
+            "name": self.name,
+            "price": self.price,
+            "description": self.description,
+            "image": self.image,
+            "qty": self.qty,
             "option": self.__option,
             "quantity_set": self.__quantity_set,
         }
@@ -115,12 +132,12 @@ class Keycap(Product):
 
     def get_detail(self):
         return {
-            "id": self._Product__id,
-            "name": self._Product__name,
-            "price": self._Product__price,
-            "description": self._Product__description,
-            "image": self._Product__image,
-            "qty": self._Product__qty,
+            "id": self.id,
+            "name": self.name,
+            "price": self.price,
+            "description": self.description,
+            "image": self.image,
+            "qty": self.qty,
             "version": self.__version,
             "color": self.__color,
         }

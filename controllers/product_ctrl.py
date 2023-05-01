@@ -18,3 +18,22 @@ async def get_product_in_category(body: CateName):
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/get_all_category")
+async def get_all_category():
+    try:
+        return {
+            "data": [
+                {
+                    "cate_name": cate.name,
+                    "products": [p.get_detail() for p in cate.products],
+                }
+                for cate in system.categories
+            ]
+        }
+
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

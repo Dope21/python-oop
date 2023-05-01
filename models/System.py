@@ -11,6 +11,10 @@ class System:
         self.__orders = []
         self.__codes = []
 
+    @property
+    def categories(self):
+        return self.__categories
+
     # customer
     def sign_in(self, email, password):
         for customer in self.__customers:
