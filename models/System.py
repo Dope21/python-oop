@@ -1,6 +1,6 @@
-from .User import Customer, Admin
-from .Order import Order
+from .User import Customer
 from .Cart import Cart
+from .Category import Category
 
 
 class System:
@@ -41,3 +41,15 @@ class System:
         for cate in self.__categories:
             if cate.name == name:
                 return cate
+        raise ValueError("Invalid Category name.")
+
+    def create_category(self, name):
+        category = Category(name)
+        self.add_category(category)
+        return category
+
+    def add_category(self, category):
+        if isinstance(category, Category):
+            self.__categories.append(category)
+        else:
+            raise ValueError("Please add Category object.")
