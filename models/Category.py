@@ -11,7 +11,7 @@ class Category:
         return self.__name
 
     @property
-    def product(self):
+    def products(self):
         return self.__products
 
     def create_product(self, **kwargs):
@@ -21,51 +21,51 @@ class Category:
         else:
             pro_id = 1
 
-        if data.kind == "keyboard":
+        if data["kind"] == "keyboard":
             product = Keyboard(
                 pro_id,
-                data.name,
-                data.price,
-                data.description,
-                data.image,
-                data.qty,
-                data.version,
-                data.type,
-                data.switches,
-                data.color,
+                data["name"],
+                data["price"],
+                data["description"],
+                data["image"],
+                data["qty"],
+                data["version"],
+                data["type"],
+                data["switches"],
+                data["color"],
             )
-        elif data.kind == "keycap":
+        elif data["kind"] == "keycap":
             product = Keycap(
                 pro_id,
-                data.name,
-                data.price,
-                data.description,
-                data.image,
-                data.qty,
-                data.version,
-                data.color,
+                data["name"],
+                data["price"],
+                data["description"],
+                data["image"],
+                data["qty"],
+                data["version"],
+                data["color"],
             )
-        elif data.kind == "switch":
+        elif data["kind"] == "switch":
             product = Switch(
                 pro_id,
-                data.name,
-                data.price,
-                data.description,
-                data.image,
-                data.qty,
-                data.option,
-                data.quantity_set,
+                data["name"],
+                data["price"],
+                data["description"],
+                data["image"],
+                data["qty"],
+                data["option"],
+                data["quantity_set"],
             )
         else:
             product = Mouse(
                 pro_id,
-                data.name,
-                data.price,
-                data.description,
-                data.image,
-                data.qty,
-                data.connection,
-                data.color,
+                data["name"],
+                data["price"],
+                data["description"],
+                data["image"],
+                data["qty"],
+                data["connection"],
+                data["color"],
             )
         self.add_product(product)
         return product
