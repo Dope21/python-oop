@@ -1,5 +1,4 @@
 from models.System import System
-from models.User import Customer
 from models.CodeDiscount import *
 from models.Category import *
 from models.Product import *
@@ -13,70 +12,73 @@ for i in range(10):
     lastname = f"lastname{i+1}"
     password = f"password{i+1}"
     system.create_customer(email, password, firstname, lastname)
-# mockup for create order
-# p1 = Keyboard(
-#     "KB001",
-#     "Corsair K70 RGB MK.2",
-#     159.99,
-#     "Mechanical Gaming Keyboard",
-#     "https://example.com/keyboard.jpg",
-#     10,
-#     "MK.2",
-#     "Mechanical",
-#     "Cherry MX Speed",
-#     "Black",
-# )
-# p2 = Keyboard(
-#     "kb002",
-#     "Wireless Office Keyboard",
-#     49.99,
-#     "A wireless keyboard with a slim design and quiet keys, suitable for office use.",
-#     "https://example.com/images/wireless-office-kb.jpg",
-#     25,
-#     "V1",
-#     "Membrane",
-#     "N/A",
-#     "White",
-# )
-# p3 = Keyboard(
-#     "kb003",
-#     "Backlit Mechanical Keyboard",
-#     89.99,
-#     "A wireless keyboard with a slim design and quiet keys, suitable for office use.A backlit mechanical keyboard with customizable lighting effects and hot-swappable switches.",
-#     "https://example.com/images/backlit-mechanical-kb.jpg",
-#     5,
-#     "V3",
-#     "Mechanical",
-#     "Gateron Brown",
-#     "Silver",
-# )
-# p4 = Keyboard(
-#     "kb004",
-#     "Wireless Mechanical Keyboard",
-#     99.99,
-#     "A wireless mechanical keyboard with a tenkeyless layout and RGB lighting.",
-#     "https://example.com/images/wireless-mechanical-kb.jpg",
-#     15,
-#     "V2",
-#     "Mechanical",
-#     "Kailh Box White",
-#     "Black",
-# )
-# p5 = Keyboard(
-#     "kb005",
-#     "RGB Gaming Keyboard",
-#     69.99,
-#     "An RGB gaming keyboard with a compact layout and detachable USB cable.",
-#     "https://example.com/images/rgb-gaming-kb.jpg",
-#     20,
-#     "V1",
-#     "Mechanical",
-#     "Outemu Blue",
-#     "White",
-# )
-# keyboard_cate = Category(name="keybaord", products=[p1, p2, p3, p4, p5])
-# system.add_category(keyboard_cate)
 
+# product mockup
+keyboard = system.create_category("keyboard")
+keycap = system.create_category("keycap")
+switch = system.create_category("switch")
+mouse = system.create_category("mouse")
+
+keyboard.create_product(
+    kind="keyboard",
+    name="Corsair K70 RGB MK.2",
+    price=159.99,
+    description="Mechanical Gaming Keyboard",
+    image="https://example.com/keyboard.jpg",
+    qty=10,
+    version="MK.2",
+    type="Mechanical",
+    switches="Cherry MX Speed",
+    color="Black",
+)
+keyboard.create_product(
+    kind="keyboard",
+    name="Wireless Office Keyboard",
+    price=49.99,
+    description="A wireless keyboard with a slim design and quiet keys, suitable for office use.",
+    image="https://example.com/images/wireless-office-kb.jpg",
+    qty=25,
+    version="V1",
+    type="Membrane",
+    switches="N/A",
+    color="White",
+)
+keyboard.create_product(
+    kind="keyboard",
+    name="Backlit Mechanical Keyboard",
+    price=89.99,
+    description="A wireless keyboard with a slim design and quiet keys, suitable for office use.A backlit mechanical keyboard with customizable lighting effects and hot-swappable switches.",
+    image="https://example.com/images/backlit-mechanical-kb.jpg",
+    qty=5,
+    version="V3",
+    type="Mechanical",
+    switches="Gateron Brown",
+    color="Silver",
+)
+keyboard.create_product(
+    kind="keyboard",
+    name="Wireless Mechanical Keyboard",
+    price=99.99,
+    description="A wireless mechanical keyboard with a tenkeyless layout and RGB lighting.",
+    image="https://example.com/images/wireless-mechanical-kb.jpg",
+    qty=15,
+    version="V2",
+    type="Mechanical",
+    switches="Kailh Box White",
+    color="Black",
+)
+keyboard.create_product(
+    kind="keyboard",
+    name="RGB Gaming Keyboard",
+    price=69.99,
+    description="An RGB gaming keyboard with a compact layout and detachable USB cable.",
+    image="https://example.com/images/rgb-gaming-kb.jpg",
+    qty=20,
+    version="V1",
+    type="Mechanical",
+    switches="Outemu Blue",
+    color="White",
+)
 # # add code discount
 # code = CodeDiscount(code="9arm", discount=0.8, expire_date="yy-mm-dd")
 # system.add_code_discount(code)
