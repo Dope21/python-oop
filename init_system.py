@@ -79,6 +79,62 @@ keyboard.create_product(
     switches="Outemu Blue",
     color="White",
 )
+
+keycap.create_product(
+    kind="keycap",
+    name="Cherry MX Keycap Set",
+    price=29.99,
+    description="A set of Cherry MX keycaps with a variety of colors and styles to choose from.",
+    image="https://example.com/images/cherry-mx-keycap-set.jpg",
+    qty=10,
+    version="V2",
+    color="Multi",
+)
+
+keycap.create_product(
+    kind="keycap",
+    name="PBT Dye-Sublimated Keycap Set",
+    price=49.99,
+    description="A set of PBT keycaps with dye-sublimated legends for long-lasting and durable legends.",
+    image="https://example.com/images/pbt-dye-sublimated-keycap-set.jpg",
+    qty=15,
+    version="V1",
+    color="Black and White",
+)
+
+keycap.create_product(
+    kind="keycap",
+    name="SA Keycap Set",
+    price=69.99,
+    description="A set of sculpted SA profile keycaps with a vintage look and feel.",
+    image="https://example.com/images/sa-keycap-set.jpg",
+    qty=8,
+    version="V3",
+    color="Beige",
+)
+
+keycap.create_product(
+    kind="keycap",
+    name="Backlit Keycap Set",
+    price=39.99,
+    description="A set of keycaps with translucent legends and a variety of color options for customizable lighting effects.",
+    image="https://example.com/images/backlit-keycap-set.jpg",
+    qty=12,
+    version="V2",
+    color="Multi",
+)
+
+keycap.create_product(
+    kind="keycap",
+    name="Customized Artisan Keycap",
+    price=99.99,
+    description="A one-of-a-kind artisan keycap with a unique design and hand-crafted by an artisan maker.",
+    image="https://example.com/images/customized-artisan-keycap.jpg",
+    qty=1,
+    version="V1",
+    color="Purple",
+)
+
 # # add code discount
 # code = CodeDiscount(code="9arm", discount=0.8, expire_date="yy-mm-dd")
 # system.add_code_discount(code)
