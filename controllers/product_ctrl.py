@@ -25,14 +25,9 @@ async def get_all_category():
     try:
         return {
             "data": [
-                {
-                    "cate_name": cate.name,
-                    "products": [p.get_detail() for p in cate.products],
-                }
-                for cate in system.categories
+                p.get_detail() for cate in system.categories for p in cate.products
             ]
         }
-
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
