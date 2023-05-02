@@ -75,3 +75,9 @@ class Category:
             self.__products.append(product)
         else:
             raise ValueError("Please add Product object.")
+
+    def get_product_by_id(self, id):
+        for product in self.__products:
+            if product.id == id:
+                return product
+        raise ValueError("There is no Product with this ID.")
