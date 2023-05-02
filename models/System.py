@@ -2,7 +2,6 @@ from .User import Customer
 from .Cart import Cart
 from .Category import Category
 
-
 class System:
     def __init__(self):
         self.__customers = []
