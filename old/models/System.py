@@ -1,11 +1,8 @@
-from dataclasses import dataclass, field
-from typing import List
-from .User import Customer, Admin
-from .Order import Order
+from .User import Customer
+from .Cart import Cart
 from .Category import Category
-from .CodeDiscount import CodeDiscount
-from .Payment import CreditCard, Paypal, PaymentStatus
 
+<<<<<<< HEAD:old/models/System.py
 class System:
     def __init__(self, 
                  customers: List[Customer] = [], 
@@ -19,9 +16,25 @@ class System:
         self.__categories = categories
         self.__orders = orders
         self.__codes = codes
+=======
 
+class System:
+    def __init__(self):
+        self.__customers = []
+        self.__admins = []
+        self.__categories = []
+        self.__orders = []
+        self.__codes = []
+>>>>>>> 978fe66d470de83d9780abcc8da679c109833c80:models/System.py
+
+    @property
+    def categories(self):
+        return self.__categories
+
+    # customer
     def sign_in(self, email, password):
         for customer in self.__customers:
+<<<<<<< HEAD:old/models/System.py
             if customer.__email == email and customer.__password == password:
                 return customer
         return False
@@ -40,10 +53,46 @@ class System:
             return True
         else:
             return False 
+=======
+            if customer.check_credential(email, password):
+                return customer.email
+        raise ValueError("Wrong email or password.")
+
+    def add_customer(self, customer):
+        if isinstance(customer, Customer):
+            self.__customers.append(customer)
+        else:
+            raise ValueError("Please add Customer object.")
+
+    def get_customer_by_email(self, email):
+        for customer in self.__customers:
+            if email == customer.email:
+                return customer
+
+    def create_customer(self, email, password, firstname, lastname):
+        if self.get_customer_by_email(email):
+            raise ValueError("This email in already in use.")
+        customer = Customer(email, password, firstname, lastname, Cart())
+        self.add_customer(customer)
+        return customer
+
+    # category
+    def get_category_by_name(self, name):
+        for cate in self.__categories:
+            if cate.name == name:
+                return cate
+        raise ValueError("Invalid Category name.")
+
+    def create_category(self, name):
+        category = Category(name)
+        self.add_category(category)
+        return category
+>>>>>>> 978fe66d470de83d9780abcc8da679c109833c80:models/System.py
 
     def add_category(self, category):
         if isinstance(category, Category):
             self.__categories.append(category)
+<<<<<<< HEAD:old/models/System.py
             return True
         else:
             return False 
@@ -110,3 +159,7 @@ class System:
         for category in self.__categories:
             list.append(category.name)
         return list
+=======
+        else:
+            raise ValueError("Please add Category object.")
+>>>>>>> 978fe66d470de83d9780abcc8da679c109833c80:models/System.py
