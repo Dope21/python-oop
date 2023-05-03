@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from typing import List
 
 
 class SignIn(BaseModel):
@@ -18,10 +19,16 @@ class CartItem(BaseModel):
     qty: int
 
 
-class AddCartItem(BaseModel):
+class Item(BaseModel):
+    id: int
+    quantity: int
+    cate_name: str
+
+
+class SetCart(BaseModel):
     email: str
-    cart_item: CartItem
+    product_list: List[Item]
 
 
-class GetCart(BaseModel):
+class Email(BaseModel):
     email: str

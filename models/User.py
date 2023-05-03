@@ -36,3 +36,7 @@ class Customer(User):
         super().__init__(email, password, firstname, lastname)
         self.__cart = cart
         self.__orders = []
+
+    @property
+    def cart(self):
+        return self.__cart

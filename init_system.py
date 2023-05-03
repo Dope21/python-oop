@@ -13,6 +13,8 @@ for i in range(10):
     password = f"password{i+1}"
     system.create_customer(email, password, firstname, lastname)
 
+customer = system.get_customer_by_email("email1@email.com")
+
 # product mockup
 keyboard = system.create_category("keyboard")
 keycap = system.create_category("keycap")
@@ -134,6 +136,8 @@ keycap.create_product(
     version="V1",
     color="Purple",
 )
+
+cart = customer.cart
 
 # # add code discount
 # code = CodeDiscount(code="9arm", discount=0.8, expire_date="yy-mm-dd")

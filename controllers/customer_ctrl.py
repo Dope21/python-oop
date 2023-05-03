@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from init_system import system
-from schemas.customer_shcema import SignIn, SignUp, AddCartItem, GetCart
+from schemas.customer_shcema import SignIn, SignUp, SetCart, Email
+from models.Cart import CartItem
 
 router = APIRouter(prefix="/customer")
 
@@ -35,23 +36,45 @@ async def customer_register(body: SignUp):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.post("/add_cart")
-async def add_cart_item(body: AddCartItem):
-    email = body.email
-    item_id = body.cart_item.product_id
-    qty = body.cart_item.qty
+@router.post("/set_cart_item")
+async def add_cart_item(body: SetCart):
+    try:
+        email = body.email
+        product_list = body.product_list
 
-    customer = system.find_customer_by_email(email)
-    product = system.find_product_by_id(item_id)
+        customer = system.get_customer_by_email(email)
+        if not customer:
+            raise ValueError("There is no customer with this email.")
+        cart = customer.cart
 
-    if customer and product:
-        customer.add_cart_item(product, qty)
-        return {"message": "success"}
-    else:
-        raise HTTPException(status_code=400, detail="Something went wrong")
+        cart_items = []
+        for item in product_list:
+            category = system.get_category_by_name(item.cate_name)
+            product = category.get_product_by_id(item.id)
+            cart_items.append(CartItem(product, item.quantity))
+
+        cart.cart_items = cart_items
+
+        return {"data": cart_items}
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/viewcart")
-async def view_cart(body: GetCart):
-    customer = system.get_customer_by_email(body.email)
-    return customer.cart
+@router.post("/get_cart_detail")
+async def view_cart(body: Email):
+    try:
+        email = body.email
+
+        customer = system.get_customer_by_email(email)
+        if not customer:
+            raise ValueError("There is no customer with this email.")
+        cart = customer.cart
+
+        return {"data": cart.get_detail()}
+
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

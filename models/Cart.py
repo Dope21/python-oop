@@ -14,17 +14,26 @@ class CartItem:
     def qty(self):
         return self.__qty
 
+    def get_detail(self):
+        detail = self.__product.get_detail()
+        detail["qty"] = self.__qty
+        return detail
+
 
 class Cart:
-    def __intit__(self):
+    def __init__(self):
         self.__cart_items = []
 
-    def add_item(self, item):
-        if isinstance(item, CartItem):
-            self.cart_items.append(item)
-            return True
-        raise Exception("Please add CartItem object.")
+    @property
+    def cart_items(self):
+        return self.__cart_items
 
-    def remove_item(self, item):
-        if item in self.__cart_items:
-            self.__cart_items.remove(item)
+    @cart_items.setter
+    def cart_items(self, item_list):
+        for item in item_list:
+            if not isinstance(item, CartItem):
+                raise ValueError("Please add CartItem object")
+        self.__cart_items = item_list
+
+    def get_detail(self):
+        return [item.get_detail() for item in self.__cart_items]
