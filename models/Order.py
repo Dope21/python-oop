@@ -38,28 +38,15 @@ class Order:
         shipping: Shipping,
         payment: Payment,
         status: OrderStatus,
+        code: str,
     ):
         self.__email = email
         self.__items = items
         self.__shipping = shipping
         self.__payment = payment
         self.__status = status
+        self.__code = code
 
-    def is_history_of(self, email):
-        if self.__email == email:
-            return True
-
-    def process_payment(self, payment_info):
-        if self.__payment.pay(payment_info):
-            self.__status = OrderStatus.CLOSE
-            return True
-        return False
-
-    def get_order_detail(self):
-        return {
-            "email": self.__email,
-            "items": self.__items,
-            "shipping": self.__shipping,
-            "payment": self.__payment,
-            "status": self.__status,
-        }
+    def process_payment(self):
+        self.__payment.pay()
+        self.__status = OrderStatus.CLOSE

@@ -1,4 +1,5 @@
 from .Product import *
+from .Order import OrderItem
 
 
 class CartItem:
@@ -37,3 +38,13 @@ class Cart:
 
     def get_detail(self):
         return [item.get_detail() for item in self.__cart_items]
+
+    def create_order_items(self, discount):
+        order_items = []
+        for item in self.__cart_items:
+            order_items.append(
+                OrderItem(
+                    item.product, item.qty, round(item.product.price * discount, 2)
+                )
+            )
+        return order_items

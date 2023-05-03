@@ -1,13 +1,14 @@
 from .User import Customer
 from .Cart import Cart
 from .Category import Category
+from .CodeDiscount import CodeDiscount
+
 
 class System:
     def __init__(self):
         self.__customers = []
         self.__admins = []
         self.__categories = []
-        self.__orders = []
         self.__codes = []
 
     @property
@@ -56,3 +57,16 @@ class System:
             self.__categories.append(category)
         else:
             raise ValueError("Please add Category object.")
+
+    # Discount
+    def get_discount_code(self, code):
+        for discount in self.__codes:
+            if discount.code == code:
+                return discount
+        raise ValueError(f"Invalid Discount code: {code}.")
+
+    def add_code_discount(self, discount):
+        if isinstance(discount, CodeDiscount):
+            self.__codes.append(discount)
+        else:
+            raise ValueError("Please add DiscountCode object.")

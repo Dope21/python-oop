@@ -1,23 +1,31 @@
-from dataclasses import dataclass
 from enum import Enum
-from typing import Optional
+from datetime import date
+import random
+import string
+
 
 class PaymentStatus(Enum):
-  Unpaid = 0
-  Paid = 1
-  
-@dataclass
-class Payment:
-  name_on_card: str
-  status: PaymentStatus
-  transection_id: Optional[str] = None
-  date: Optional[str] = None
+    UNPAID = 0
+    PAID = 1
 
-  def pay(self, payment_info):
-    return True
-    
+
+class Payment:
+    def __init__(self):
+        self.__status = PaymentStatus.UNPAID
+        self.__date = None
+        self.__transection_id = None
+
+    def pay(self):
+        self.__status = PaymentStatus.PAID
+        self.__date = date.today()
+        self.__transection_id = "".join(
+            random.choices(string.ascii_uppercase + string.digits, k=10)
+        )
+
+
 class Paypal(Payment):
-  pass
+    pass
+
 
 class CreditCard(Payment):
-  pass
+    pass

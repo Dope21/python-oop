@@ -1,4 +1,7 @@
 from .Cart import Cart
+from models.Payment import *
+from models.Shipping import Shipping
+from models.Order import *
 
 
 class User:
@@ -40,3 +43,27 @@ class Customer(User):
     @property
     def cart(self):
         return self.__cart
+
+    def create_order(
+        self,
+        firstname,
+        lastname,
+        address,
+        phone,
+        zip_code,
+        code,
+        pay_method,
+        order_items,
+    ):
+        shipping = Shipping(firstname, lastname, address, phone, zip_code)
+        if pay_method == "paypal":
+            payment = Paypal()
+        if pay_method == "credit-card":
+            payment = CreditCard()
+        order = Order(
+            self.email, order_items, shipping, payment, OrderStatus.OPEN, code
+        )
+        self.__orders.append(order)
+        order.process_payment()
+        self.__cart = Cart()
+        return order
