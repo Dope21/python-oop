@@ -49,7 +49,7 @@ async def add_cart_item(body: SetCart):
 
         cart_items = []
         for item in product_list:
-            category = system.get_category_by_name(item.cate_name)
+            category = system.get_category_by_name(item.category)
             product = category.get_product_by_id(item.id)
             cart_items.append(CartItem(product, item.quantity))
 

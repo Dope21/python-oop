@@ -22,7 +22,7 @@ class CartItem(BaseModel):
 class Item(BaseModel):
     id: int
     quantity: int
-    cate_name: str
+    category: str
 
 
 class SetCart(BaseModel):
