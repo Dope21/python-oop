@@ -34,10 +34,8 @@ def checkout(body: Checkout):
         pay_method = body.pay_method
 
         customer = system.get_customer_by_email(email)
-        cart = customer.cart
 
-        order_items = cart.create_order_items(discount)
-        customer.create_order(
+        customer.create_order_checkout(
             firstname,
             lastname,
             address,
@@ -46,7 +44,45 @@ def checkout(body: Checkout):
             code,
             discount,
             pay_method,
-            order_items,
+        )
+
+        return {"detail": "Your order had been created."}
+
+    except ValueError as e:
+        raise HTTPException(detail=str(e), status_code=400)
+    except Exception as e:
+        raise HTTPException(detail=str(e), status_code=500)
+
+
+@router.post("/buynow")
+def checkout(body: Checkout):
+    try:
+        email = body.email
+        firstname = body.firstname
+        lastname = body.lastname
+        address = body.address
+        phone = body.phone
+        zip_code = body.zip_code
+        code = body.code
+        discount = body.discount
+        pay_method = body.pay_method
+        pro_id = body.pro_id
+        cate_name = body.cate_name
+
+        customer = system.get_customer_by_email(email)
+        category = system.get_category_by_name(cate_name)
+        product = category.get_product_by_id(pro_id)
+
+        customer.create_order_buynow(
+            firstname,
+            lastname,
+            address,
+            phone,
+            zip_code,
+            code,
+            discount,
+            pay_method,
+            product,
         )
 
         return {"detail": "Your order had been created."}
