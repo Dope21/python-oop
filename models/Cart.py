@@ -39,12 +39,16 @@ class Cart:
     def get_detail(self):
         return [item.get_detail() for item in self.__cart_items]
 
-    def create_order_items(self, discount):
+    def create_order_items(self, discount=1):
         order_items = []
         for item in self.__cart_items:
+            item.product.decrease_quantity(item.qty)
             order_items.append(
                 OrderItem(
                     item.product, item.qty, round(item.product.price * discount, 2)
                 )
             )
         return order_items
+
+    def clear_cart(self):
+        self.__cart_items = []

@@ -66,8 +66,8 @@ class Customer(User):
             self.email, order_items, shipping, payment, OrderStatus.OPEN, code
         )
         self.__orders.append(order)
-        order.process_payment()
-        self.__cart = Cart()
+        self.__cart.clear_cart()
+        order.proceed_payment()
         return order
 
     def create_order_buynow(

@@ -31,6 +31,9 @@ class Product:
     def qty(self):
         return self.__qty
 
+    def decrease_quantity(self, amout):
+        self.__qty - amout
+
 
 class Keyboard(Product):
     def __init__(

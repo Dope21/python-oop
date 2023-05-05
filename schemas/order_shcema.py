@@ -13,7 +13,7 @@ class Checkout(BaseModel):
     code: str
 
 
-class Checkout(BaseModel):
+class Buynow(BaseModel):
     email: str
     firstname: str
     lastname: str

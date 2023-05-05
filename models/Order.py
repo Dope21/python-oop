@@ -47,6 +47,6 @@ class Order:
         self.__status = status
         self.__code = code
 
-    def process_payment(self):
+    def proceed_payment(self):
         self.__payment.pay()
         self.__status = OrderStatus.CLOSE

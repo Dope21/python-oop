@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from schemas.order_shcema import CheckDiscount, Checkout
+from schemas.order_shcema import CheckDiscount, Checkout, Buynow
 from init_system import system
 
 router = APIRouter(prefix="/order")
@@ -55,7 +55,7 @@ def checkout(body: Checkout):
 
 
 @router.post("/buynow")
-def checkout(body: Checkout):
+def checkout(body: Buynow):
     try:
         email = body.email
         firstname = body.firstname
