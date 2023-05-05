@@ -67,14 +67,8 @@ class Category:
                 data["connection"],
                 data["color"],
             )
-        self.add_product(product)
+        self.__products.append(product)
         return product
-
-    def add_product(self, product):
-        if isinstance(product, Product):
-            self.__products.append(product)
-        else:
-            raise ValueError("Please add Product object.")
 
     def get_product_by_id(self, id):
         for product in self.__products:
