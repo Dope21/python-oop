@@ -1,5 +1,6 @@
 from .Product import *
 from .Order import OrderItem
+import copy
 
 
 class CartItem:
@@ -42,12 +43,14 @@ class Cart:
     def create_order_items(self, discount=1):
         order_items = []
         for item in self.__cart_items:
-            item.product.decrease_quantity(item.qty)
+            order_product = copy.deepcopy(item.product)
             order_items.append(
                 OrderItem(
-                    item.product, item.qty, round(item.product.price * discount, 2)
+                    order_product, item.qty, round(item.product.price * discount, 2)
                 )
             )
+            item.product.decrease_quantity(item.qty)
+
         return order_items
 
     def clear_cart(self):
