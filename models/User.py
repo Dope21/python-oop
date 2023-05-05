@@ -69,27 +69,3 @@ class Customer(User):
         self.__cart.clear_cart()
         order.proceed_payment()
         return order
-
-    def create_order_buynow(
-        self,
-        firstname,
-        lastname,
-        address,
-        phone,
-        zip_code,
-        code,
-        discount,
-        pay_method,
-        product,
-    ):
-        order_item = OrderItem(product, 1, product.price * discount)
-        shipping = Shipping(firstname, lastname, address, phone, zip_code)
-        if pay_method == "paypal":
-            payment = Paypal()
-        if pay_method == "credit-card":
-            payment = CreditCard()
-
-        order = Order(self.email, order_item, shipping, payment, OrderStatus.OPEN, code)
-        self.__orders.append(order)
-        order.process_payment()
-        return order

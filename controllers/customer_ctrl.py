@@ -55,7 +55,7 @@ async def add_cart_item(body: SetCart):
 
         cart.cart_items = cart_items
 
-        return {"data": cart_items}
+        return {"detail": "Successfully added."}
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
